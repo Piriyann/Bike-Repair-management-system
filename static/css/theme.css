@@ -1,0 +1,237 @@
+:root {
+    --charcoal: #1A1D23;
+    --charcoal-light: #262A33;
+    --cream: #F7F5F2;
+    --cream-card: #FFFFFF;
+    --amber: #D97B3F;
+    --amber-dark: #B8632E;
+    --teal: #1F6F5C;
+    --teal-dark: #175A4A;
+    --rust: #C44536;
+    --rust-dark: #A8392C;
+    --ink: #2B2B2B;
+    --ink-muted: #6B6B6B;
+    --border-soft: #E5E1DA;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    letter-spacing: 0.01em;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--charcoal);
+}
+
+.navbar.bg-dark {
+    background-color: var(--charcoal) !important;
+    border-bottom: 3px solid var(--amber);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+.navbar-brand {
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    font-size: 1.25rem;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: #C9CCD3 !important;
+    padding: 0.5rem 0.9rem !important;
+    border-radius: 6px;
+    transition: all 0.18s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #FFFFFF !important;
+    background-color: rgba(217, 123, 63, 0.15);
+}
+
+.navbar-nav .nav-link.text-danger {
+    color: #E08A7A !important;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(26,29,35,0.06), 0 4px 16px rgba(26,29,35,0.06);
+    overflow: hidden;
+    background-color: var(--cream-card);
+}
+
+.card-header {
+    border: none;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    padding: 0.9rem 1.25rem;
+}
+
+.card-header.bg-primary {
+    background-color: var(--charcoal) !important;
+    border-left: 4px solid var(--amber);
+}
+
+.card-header.bg-success {
+    background-color: var(--teal) !important;
+    border-left: 4px solid #4FCBA8;
+}
+
+.card-header.bg-danger {
+    background-color: var(--rust) !important;
+    border-left: 4px solid #E89488;
+}
+
+.card-header.bg-dark {
+    background-color: var(--charcoal) !important;
+    border-left: 4px solid var(--amber);
+}
+
+.card-body {
+    padding: 1.4rem;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.35rem;
+}
+
+.form-control, .form-select {
+    border: 1.5px solid var(--border-soft);
+    border-radius: 7px;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.95rem;
+    transition: all 0.18s ease;
+    background-color: #FCFBF9;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px rgba(217, 123, 63, 0.15);
+    background-color: #FFFFFF;
+}
+
+.btn {
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    border-radius: 7px;
+    border: none;
+    padding: 0.55rem 1.1rem;
+    transition: all 0.18s ease;
+}
+
+.btn-primary {
+    background-color: var(--amber);
+    color: #FFFFFF;
+}
+.btn-primary:hover {
+    background-color: var(--amber-dark);
+    transform: translateY(-1px);
+}
+
+.btn-success {
+    background-color: var(--teal);
+}
+.btn-success:hover {
+    background-color: var(--teal-dark);
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background-color: var(--rust);
+}
+.btn-danger:hover {
+    background-color: var(--rust-dark);
+    transform: translateY(-1px);
+}
+
+.btn-info {
+    background-color: var(--charcoal-light);
+    color: #FFFFFF;
+}
+.btn-info:hover {
+    background-color: var(--charcoal);
+    color: #FFFFFF;
+}
+
+.btn-secondary, .btn-outline-secondary {
+    border: 1.5px solid var(--border-soft);
+    color: var(--ink-muted);
+    background-color: transparent;
+}
+.btn-outline-secondary:hover {
+    background-color: var(--charcoal);
+    border-color: var(--charcoal);
+    color: #FFFFFF;
+}
+
+.btn-sm {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.82rem;
+}
+
+.btn-lg {
+    padding: 0.7rem 1.3rem;
+    font-size: 1rem;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead.table-dark th {
+    background-color: var(--charcoal) !important;
+    color: #E8E6E1;
+    font-weight: 700;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none;
+    padding: 0.75rem 0.9rem;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(217, 123, 63, 0.04);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(217, 123, 63, 0.09);
+}
+
+.table td {
+    padding: 0.7rem 0.9rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 0.92rem;
+}
+
+.alert-danger {
+    background-color: #FBEAE7;
+    border: none;
+    border-left: 4px solid var(--rust);
+    color: var(--rust-dark);
+    font-weight: 600;
+    border-radius: 7px;
+}
+
+hr {
+    border-color: var(--border-soft);
+    opacity: 1;
+}
+
+.text-muted {
+    color: var(--ink-muted) !important;
+}

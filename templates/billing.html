@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/theme.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">🔧 Bike Repair System</a>
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="/">🏠 Dashboard</a>
+            <a class="nav-link" href="/customers">Customers</a>
+            <a class="nav-link" href="/services">Services</a>
+            <a class="nav-link" href="/inventory">Inventory</a>
+            <a class="nav-link" href="/billing">Billing</a>
+            <a class="nav-link" href="/analytics">Analytics</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h2>🧾 Billing</h2>
+
+    <div class="card shadow mb-4">
+        <div class="card-header bg-danger text-white">
+            <h5 class="mb-0">Add New Bill</h5>
+        </div>
+        <div class="card-body">
+            {% if services %}
+            <form action="/add_billing" method="POST">
+                <div class="mb-3">
+                    <label>Service</label>
+                    <select name="service_id" class="form-control" required>
+                        <option value="" disabled selected>-- Select Completed Service --</option>
+                        {% for s in services %}
+                        <option value="{{ s[0] }}">{{ s[1] }} - {{ s[2] }} ({{ s[3] }}) - {{ s[4] }} [{{ s[5] }}]</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label>Total Amount (RM)</label>
+                    <input type="number" name="total_amount" class="form-control" placeholder="Enter Amount" required>
+                </div>
+                <button type="submit" class="btn btn-danger btn-lg w-100">Add Bill</button>
+            </form>
+            {% else %}
+            <p class="text-muted">No unbilled services available. Add a service first, or all services already have bills.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">All Bills</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Customer</th>
+                        <th>Bike Model</th>
+                        <th>Total Amount (RM)</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bill in bills %}
+                    <tr>
+                        <td>{{ bill[0] }}</td>
+                        <td>{{ bill[1] }}</td>
+                        <td>{{ bill[2] }}</td>
+                        <td>RM {{ bill[3] }}</td>
+                        <td>{{ bill[4] }}</td>
+                        <td>
+                            <a href="/invoice/{{ bill[0] }}" class="btn btn-primary btn-sm">🖨️ Invoice</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

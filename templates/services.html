@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Bike Repair System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --charcoal: #1A1D23;
+            --charcoal-light: #262A33;
+            --cream: #F7F5F2;
+            --cream-card: #FFFFFF;
+            --amber: #D97B3F;
+            --amber-dark: #B8632E;
+            --teal: #1F6F5C;
+            --teal-dark: #175A4A;
+            --rust: #C44536;
+            --rust-dark: #A8392C;
+            --ink: #2B2B2B;
+            --ink-muted: #6B6B6B;
+            --border-soft: #E5E1DA;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--cream);
+            color: var(--ink);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            letter-spacing: 0.01em;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--charcoal);
+        }
+
+        .navbar.bg-dark {
+            background-color: var(--charcoal) !important;
+            border-bottom: 3px solid var(--amber);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            font-size: 1.25rem;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: #C9CCD3 !important;
+            padding: 0.5rem 0.9rem !important;
+            border-radius: 6px;
+            transition: all 0.18s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #FFFFFF !important;
+            background-color: rgba(217, 123, 63, 0.15);
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(26,29,35,0.06), 0 4px 16px rgba(26,29,35,0.06);
+            overflow: hidden;
+            background-color: var(--cream-card);
+        }
+
+        .card-header {
+            border: none;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            padding: 0.9rem 1.25rem;
+        }
+
+        .card-header.bg-success {
+            background-color: var(--teal) !important;
+            border-left: 4px solid #4FCBA8;
+        }
+
+        .card-header.bg-dark {
+            background-color: var(--charcoal) !important;
+            border-left: 4px solid var(--amber);
+        }
+
+        .card-body {
+            padding: 1.4rem;
+        }
+
+        .form-label, label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--ink-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.35rem;
+            display: block;
+        }
+
+        .form-control, .form-select {
+            border: 1.5px solid var(--border-soft);
+            border-radius: 7px;
+            padding: 0.55rem 0.85rem;
+            font-size: 0.95rem;
+            transition: all 0.18s ease;
+            background-color: #FCFBF9;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--amber);
+            box-shadow: 0 0 0 3px rgba(217, 123, 63, 0.15);
+            background-color: #FFFFFF;
+        }
+
+        .btn {
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            border-radius: 7px;
+            border: none;
+            padding: 0.55rem 1.1rem;
+            transition: all 0.18s ease;
+        }
+
+        .btn-success {
+            background-color: var(--teal);
+        }
+        .btn-success:hover {
+            background-color: var(--teal-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-danger {
+            background-color: var(--rust);
+        }
+        .btn-danger:hover {
+            background-color: var(--rust-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-sm {
+            padding: 0.35rem 0.7rem;
+            font-size: 0.82rem;
+        }
+
+        .btn-lg {
+            padding: 0.7rem 1.3rem;
+            font-size: 1rem;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead.table-dark th {
+            background-color: var(--charcoal) !important;
+            color: #E8E6E1;
+            font-weight: 700;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: none;
+            padding: 0.75rem 0.9rem;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(217, 123, 63, 0.04);
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(217, 123, 63, 0.09);
+        }
+
+        .table td {
+            padding: 0.7rem 0.9rem;
+            vertical-align: middle;
+            border-bottom: 1px solid var(--border-soft);
+            font-size: 0.92rem;
+        }
+
+        hr {
+            border-color: var(--border-soft);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">🏍️ Bike Repair System</a>
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="/">🏠 Dashboard</a>
+            <a class="nav-link" href="/customers">👤 Customers</a>
+            <a class="nav-link" href="/services">🔧 Services</a>
+            <a class="nav-link" href="/inventory">📦 Inventory</a>
+            <a class="nav-link" href="/billing">🧾 Billing</a>
+            <a class="nav-link" href="/analytics">📊 Analytics</a>
+            <a class="nav-link text-danger" href="/logout">🚪 Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h2>🔧 Services</h2>
+
+    <div class="card shadow mb-4">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">Add New Service</h5>
+        </div>
+        <div class="card-body">
+            <form action="/add_service" method="POST">
+                <div class="mb-3">
+                    <label>Customer</label>
+                    <select name="customer_id" class="form-control" required>
+                        <option value="" disabled selected>-- Select Customer --</option>
+                        {% for customer in customers %}
+                        <option value="{{ customer[0] }}">{{ customer[1] }} (NIC: {{ customer[2] }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label>Bike Model</label>
+                    <input type="text" name="bike_model" class="form-control" placeholder="Enter Bike Model" required>
+                </div>
+                <div class="mb-3">
+                    <label>Bike Number</label>
+                    <input type="text" name="bike_number" class="form-control" placeholder="Enter Bike Number" required>
+                </div>
+                <div class="mb-3">
+                    <label>Issue Description</label>
+                    <input type="text" name="issue" class="form-control" placeholder="Enter Issue" required>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg w-100">Add Service</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">All Services</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Customer</th>
+                        <th>Bike Model</th>
+                        <th>Bike Number</th>
+                        <th>Issue</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for service in services %}
+                    <tr>
+                        <td>{{ service[0] }}</td>
+                        <td>{{ service[1] }}</td>
+                        <td>{{ service[2] }}</td>
+                        <td>{{ service[3] }}</td>
+                        <td>{{ service[4] }}</td>
+                        <td>
+                            <form action="/update_status/{{ service[0] }}" method="POST">
+                                <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
+                                    <option {% if service[5] == 'Pending' %}selected{% endif %}>Pending</option>
+                                    <option {% if service[5] == 'In Progress' %}selected{% endif %}>In Progress</option>
+                                    <option {% if service[5] == 'Done' %}selected{% endif %}>Done</option>
+                                </select>
+                            </form>
+                        </td>
+                        <td>{{ service[6] }}</td>
+                        <td>
+                            <a href="/delete_service/{{ service[0] }}" class="btn btn-danger btn-sm" onclick="return confirm('Delete this service?')">🗑️ Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
